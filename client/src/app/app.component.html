@@ -4,13 +4,13 @@
     <textarea #userInput style="font-size: 15px; padding: 10px;" cols="60" rows="10"></textarea>
   </div>
   <div>
-    <!-- Use [(ngModel)] for two-way data binding -->
-    <select [(ngModel)]="selectedVoice" name="selectedVoice">
-      <option *ngFor="let voice of voices" [ngValue]="voice">{{voice}}</option>
+    <!-- Use template reference variables to get the selected value -->
+    <select #selectedVoice style="font-size: 15px;">
+      <option *ngFor="let voice of voices">{{voice}}</option>
     </select>
   </div>
   <div style="margin-top: 10px">
-    <!-- Remove the extra semicolon and correct the (click) event binding -->
-    <button style="font-size: 15px" (click)="speakNow(userInput.value)">Speak Now</button>
+    <!-- Use a click event to call the speakNow function with the values -->
+    <button style="font-size: 15px" (click)="speakNow(userInput.value, selectedVoice.value)">Speak Now</button>
   </div>
 </div>

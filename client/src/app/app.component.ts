@@ -24,13 +24,14 @@ export class AppComponent {
     audio.play();
   }
 
-  speakNow(input: any) {
+  speakNow(input: any, selectedVoice: any) {
     let data = {
       text: input,
-      voice: this.selectedVoice
+      voice: selectedVoice
     };
     this.api.speak(data).subscribe((result: any) => {
       this.playAudio(result.url);
     });
   }
+  
 }
