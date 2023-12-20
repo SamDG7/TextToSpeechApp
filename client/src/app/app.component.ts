@@ -1,18 +1,23 @@
-import { Component } from '@angular/core';
-import { APIService } from './api.service'
+// Import necessary modules
+import { Component} from '@angular/core';
+import { NgModel } from '@angular/forms';
+// Import your service
+import { APIService } from './api.service';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
+  providers: [NgModel]
 })
 export class AppComponent {
-  voices = ["Matthew", "Joanna", "Ivy", "Justin"]
-  selectedVoice = "Matthew"
+  voices = ["Matthew", "Joanna", "Ivy", "Justin"];
+  selectedVoice = "Matthew";
 
   constructor(private api: APIService) {}
 
-  playAudio(url: any){
+  playAudio(url: any) {
     let audio = new Audio();
     audio.src = url;
     audio.load();
@@ -23,7 +28,9 @@ export class AppComponent {
     let data = {
       text: input,
       voice: this.selectedVoice
-    }
-    this.api.speak(data).subscribe((result:any) => {this.playAudio(result.url);});
+    };
+    this.api.speak(data).subscribe((result: any) => {
+      this.playAudio(result.url);
+    });
   }
 }
