@@ -4,6 +4,12 @@ import os
 import uuid
 
 def speak(event, context):   
+
+    """
+    Synthesizes speech from the input string of text and
+    returns the output as an Amazon S3 object
+    """
+
     try:
         data = json.loads(event['body'])
         text_to_synthesize = data['text']
@@ -11,11 +17,17 @@ def speak(event, context):
     except KeyError as e:
         return {
             'statusCode': 400,
+            'headers': {
+                'Access-Control-Allow-Origin': '*'  # Allow CORS for all domains
+            },
             'body': json.dumps({'error': f'Missing required parameter: {str(e)}'})
         }
     except json.JSONDecodeError as e:
         return {
             'statusCode': 400,
+            'headers': {
+                'Access-Control-Allow-Origin': '*'  # Allow CORS for all domains
+            },
             'body': json.dumps({'error': f'Invalid JSON payload: {str(e)}'})
         }
     
@@ -29,7 +41,7 @@ def speak(event, context):
 
     # Step 2: Save the audio stream to an S3 bucket
     s3_bucket_name = 'talking-app-bucket'
-    file_key = f'audio/{str(uuid.uuid4())}.mp3'
+    file_key = f'audio/{str(uuid.uuid1())}.mp3'   #Check to see which uuid is being used
     
     s3_client = boto3.client('s3')
     s3_client.put_object(
@@ -48,6 +60,9 @@ def speak(event, context):
     # Return the signed URL to the front end application
     return {
         'statusCode': 200,
+        'headers': {
+                'Access-Control-Allow-Origin': '*'  # Allow CORS for all domains
+            },
         'body': json.dumps({
             'signed_url': signed_url
         })

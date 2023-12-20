@@ -2,7 +2,7 @@ service: text-to-speech-backend
 
 provider:
   name: aws
-  runtime: python2.7
+  runtime: python3.10
   region: us-east-1
   role: arn:aws:iam::249925989891:role/talking-app-role
 
