@@ -1,14 +1,29 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { APIService } from './api.service'
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'client';
+  voices = ["Matthew", "Joanna", "Ivy", "Justin"]
+  selectedVoice = "Matthew"
+
+  constructor(private api: APIService) {}
+
+  playAudio(url: any){
+    let audio = new Audio();
+    audio.src = url;
+    audio.load();
+    audio.play();
+  }
+
+  speakNow(input: any) {
+    let data = {
+      text: input,
+      voice: this.selectedVoice
+    }
+    this.api.speak(data).subscribe((result:any) => {this.playAudio(result.url);});
+  }
 }
