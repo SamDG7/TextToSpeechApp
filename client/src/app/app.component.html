@@ -1,16 +1,16 @@
-<div style="margin: auto; padding: 10px; text-align: center;">
-  <h2>My Talking App</h2>
-  <div>
-    <textarea #userInput style="font-size: 15px; padding: 10px;" cols="60" rows="10"></textarea>
+<div class="app-container">
+  <h2 class="app-title">AWS-Powered Speech Synthesis</h2>
+  <div class="input-container">
+    <textarea #userInput class="input-text" cols="60" rows="5" placeholder="Type your text here"></textarea>
   </div>
-  <div>
+  <div class="select-container">
     <!-- Use template reference variables to get the selected value -->
-    <select #selectedVoice style="font-size: 15px;">
+    <select #selectedVoice class="select-voice">
       <option *ngFor="let voice of voices">{{voice}}</option>
     </select>
   </div>
-  <div style="margin-top: 10px">
+  <div class="button-container">
     <!-- Use a click event to call the speakNow function with the values -->
-    <button style="font-size: 15px" (click)="speakNow(userInput.value, selectedVoice.value)">Speak Now</button>
+    <button class="speak-button" (click)="speakNow(userInput.value, selectedVoice.value)">Speak Now</button>
   </div>
 </div>

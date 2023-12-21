@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ecf0f1; // Light gray background for the whole page
+}
+
+.app-container {
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff; // White background for the app container
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); // Slightly stronger box shadow
+  max-width: 800px; // Adjust as needed
+  margin-top: 50px;
+
+  .app-title {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .input-container,
+  .select-container {
+    margin-bottom: 15px;
+  }
+
+  .input-text,
+  .select-voice {
+    width: 100%;
+    font-size: 15px;
+    padding: 15px; // Increased padding for better visual appeal
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px; // Rounded corners
+    resize: vertical;
+  }
+
+  .input-text::placeholder {
+    color: #888;
+  }
+
+  .select-voice {
+    margin-top: 10px;
+  }
+
+  .button-container {
+    margin-top: 25px; // Increased spacing
+  }
+
+  .speak-button {
+    font-size: 18px; // Slightly larger font
+    padding: 12px 25px; // Increased padding
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
+
+  .speak-button:hover {
+    background-color: #2980b9;
+  }
+}
