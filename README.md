@@ -3,7 +3,7 @@
 <br />
 <div align="center">
   <a href="">
-    <img src="https://github.com/SamDG7/BookXchange/blob/main/bookxchange_flutter/assets/logo_no_text.png" alt="Logo" width="80" height="80">
+    <img src="https://github.com/SamDG7/TextToSpeechApp/blob/main/images/App-Screenshot.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">AWS Polly Text to Speech Web App</h3>
